@@ -7,7 +7,12 @@ import (
 )
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@10.244.0.50:5672/")
+	conn, err := amqp.DialConfig("amqp://guest:guest@localhost:5672/", amqp.Config{
+		Properties: amqp.Table{
+			"connection_name": "golang-consumer",
+		},
+	})
+
 	if err != nil {
 		panic(err)
 	}
