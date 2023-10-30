@@ -34,3 +34,4 @@ jobs:
           build-args: |
             GO_GIT_CRED__HTTPS__GITHUB__COM=${{ secrets.GO_GIT_CRED__HTTPS__GITHUB__COM }}
             GO_PRIVATE=${{ secrets.GO_PRIVATE }}
+          platforms: linux/amd64,linux/arm64
