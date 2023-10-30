@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang-consumer
+  template:
+    metadata:
+      labels:
+        app: golang-consumer
+    spec:
+      containers:
+        - name: golang-consumer
+          image: golang-consumer:latest
