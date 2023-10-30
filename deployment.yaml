@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: golang-consumer
-          image: golang-consumer:latest
+          image: ghcr.io/lusqua/golang-queue-consumer:latest
