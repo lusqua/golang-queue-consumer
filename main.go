@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	conn, err := amqp.DialConfig("amqp://guest:guest@localhost:5672/", amqp.Config{
+	conn, err := amqp.DialConfig("amqp://guest:guest@simple-rabbitmq-cluster-server-0:5672/", amqp.Config{
 		Properties: amqp.Table{
 			"connection_name": "golang-consumer",
 		},
