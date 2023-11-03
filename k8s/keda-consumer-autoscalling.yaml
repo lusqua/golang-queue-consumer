@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: rabbitmq-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: golang-consumer
+  pollingInterval: 5 # Optional. Default: 30 seconds
+  cooldownPeriod: 30 # Optional. Default: 300 seconds
+  maxReplicaCount: 5 # Optional. Default: 100
+  minReplicaCount: 1 # Optional. Default: 0
+  triggers:
+    - type: rabbitmq
+      metadata:
+        host: amqp://guest:guest@simple-rabbitmq-cluster.default.svc.cluster.local:5672
+        protocol: auto
+        queueName: hello
+        value: "5"
+        activationValue: "10.5"
+        mode: QueueLength
