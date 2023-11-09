@@ -1,13 +1,14 @@
 package main
 
 import (
-	amqp "github.com/rabbitmq/amqp091-go"
 	"log"
 	"time"
+
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
-	conn, err := amqp.DialConfig("amqp://guest:guest@simple-rabbitmq-cluster.default.svc.cluster.local:5672/", amqp.Config{
+	conn, err := amqp.DialConfig("amqp://guest:guest@simple-rabbitmq-cluster.teste.svc.cluster.local:5672/", amqp.Config{
 		Properties: amqp.Table{
 			"connection_name": "golang-consumer",
 		},
