@@ -2,13 +2,19 @@ package main
 
 import (
 	"log"
+	"os"
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
-	conn, err := amqp.DialConfig("amqp://guest:guest@simple-rabbitmq-cluster.teste.svc.cluster.local:5672/", amqp.Config{
+	connHost := os.Getenv("RABBITMQ_HOST")
+	if connHost == "" {
+		panic("RABBITMQ_HOST environment variable not set")
+	}
+
+	conn, err := amqp.DialConfig(connHost, amqp.Config{
 		Properties: amqp.Table{
 			"connection_name": "golang-consumer",
 		},
